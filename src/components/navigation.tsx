@@ -1,12 +1,17 @@
+"use client";
 import Image from "next/image";
 import {
     SignInButton,
     SignOutButton,
-    // UserButton
+    UserButton,
+    SignedIn,
+    SignedOut,
 } from "@clerk/nextjs";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 export const Navigation = () => {
+    const router = useRouter();
+    
     return (
         <nav className="bg-[var(--background)] border-b border-[var(--foreground)]/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,11 +27,13 @@ export const Navigation = () => {
                         </h1>
                     </div>
                     <div className="flex items-center gap-4">
-                        <SignInButton mode="modal" />
-                        <Link href="/user-profile"> User Profile 
-                        </Link>
-                        <SignOutButton />
-                        {/* <UserButton /> */}
+                        <SignedOut>
+                            <SignInButton mode="modal" />
+                        </SignedOut>
+                        <SignedIn>
+                            <SignOutButton />
+                            <UserButton  />
+                        </SignedIn>
                     </div>
                 </div>
             </div>
