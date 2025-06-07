@@ -1,17 +1,19 @@
+"user client";
+
 import { auth, currentUser } from '@clerk/nextjs/server';
 
 
 export default async function DashboardPage() {
-    const authObject = await auth();
-    const userObject = await currentUser();
+    const authObj = await auth();
+    const userObj = await currentUser();
 
-    console.log("Auth Object:", authObject);
-    console.log("User Object:", userObject);
+    console.log("Auth Object:", authObj);
+    console.log("User Object:", userObj);
 
     return (
         <h1>
             Welcome to the Dashboard!
-            {userObject ? `Hello, ${userObject.firstName}!` : "Please log in."}
+            {userObj ? `Hello, ${userObj.firstName}!` : "Please log in."}
         </h1>
     );
 }

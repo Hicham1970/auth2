@@ -8,6 +8,7 @@ import {
     SignedOut,
 } from "@clerk/nextjs";
 import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 export const Navigation = () => {
     const router = useRouter();
@@ -31,8 +32,11 @@ export const Navigation = () => {
                             <SignInButton mode="modal" />
                         </SignedOut>
                         <SignedIn>
+                            {/* <UserButton /> */}
+                            <Link href="/user-profile">
+                                Profile
+                            </Link>
                             <SignOutButton />
-                            <UserButton  />
                         </SignedIn>
                     </div>
                 </div>
